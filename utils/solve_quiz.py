@@ -1,8 +1,7 @@
 from math import log, sin
 from selenium.common.exceptions import NoAlertPresentException
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
 from time import sleep
+
 
 def solve_quiz_and_get_code(self):
     

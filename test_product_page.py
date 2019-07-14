@@ -1,7 +1,6 @@
+import pytest
 from pages.product_page import ProductPage
 from utils.solve_quiz import solve_quiz_and_get_code
-from time import sleep
-import pytest
 
 
 link_product = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"

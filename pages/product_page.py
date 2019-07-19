@@ -18,11 +18,19 @@ class ProductPage(BasePage):
 
     def is_product_added_to_cart(self):
         product_name = self.get_product_name()
-        msg_added_to_cart = self.browser.find_element(*ProductPageLocators.MSG_ADDED_TO_CART).text
+        msg_added_to_cart = self.browser.find_element(*ProductPageLocators.MSG_SUCCESS_ADDED_TO_CART).text
         product_name_in_cart = self.browser.find_element(*ProductPageLocators.MSG_PRODUCT_IN_CART).text
         
         assert product_name == product_name_in_cart, \
             f"product names are different: {product_name} != {product_name_in_cart}"
-        
+
         assert product_name + " has been added to your basket." == msg_added_to_cart, \
             f"product {product_name} has not been added to cart"
+
+    def should_not_be_success_message(self):
+        msg_is_not_present = self.is_not_element_present(*ProductPageLocators.MSG_SUCCESS_ADDED_TO_CART)
+        assert msg_is_not_present, "success message is present"
+
+    def should_be_disappeared_success_message(self):
+        msg_is_disappeared = self.is_disappeared(*ProductPageLocators.MSG_SUCCESS_ADDED_TO_CART)
+        assert msg_is_disappeared, "success message is not disappeared"
